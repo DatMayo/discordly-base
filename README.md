@@ -1,6 +1,6 @@
-<center>
+<p align="center">
 <img src="logo.png" alt="Discordly Base" style="max-width: 50%">
-</center>
+</p>
 
 # Discordly Base ![ISSUES](https://img.shields.io/github/issues/Fokklz/discordly-base)
 
