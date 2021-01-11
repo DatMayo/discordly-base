@@ -100,3 +100,8 @@ A level module is available for reference. If there are any questions, I will be
 ```bash
 $ npm run start
 ```
+
+## Work in Progress
+
+I am in the progress of writing an introduction on how to use it for your Discord projects. Feel free to follow my
+Twitch Channel to get regular updates and ask Questions: [twitch.tv/fokklz](https://twitch.tv/fokklz).
