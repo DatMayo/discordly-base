@@ -1,19 +1,21 @@
-import { Message, TextChannel } from "discord.js";
-import Event from "../../decorators/event.decorator";
-import Command, { CommandMessage } from "../../decorators/command.decorator";
+import { Base, Message, TextChannel } from "discord.js";
+import Event from "../../lib/decorators/event.decorator";
+import Command, {
+  CommandMessage,
+} from "../../lib/decorators/command.decorator";
 import { Discordly } from "../..";
 import LevelsSchema, { LevelsModel } from "./levels.schema";
 import { MessageChannel } from "worker_threads";
 import { getGuildChannel } from "../../utils/discord-guild.utils";
-import { BaseModule } from "../../definitions/module.base";
+import { Module } from "../../lib/classes/module.class";
 
-export class LevelModule extends BaseModule {
+export class LevelModule extends Module {
+  model: LevelsModel;
+
   constructor() {
     super();
-    this.name = "Levels";
+    this.name = "level";
   }
-
-  model: LevelsModel;
 
   public init() {
     if (!Discordly.useMongoDB()) {
@@ -25,7 +27,7 @@ export class LevelModule extends BaseModule {
       LevelsSchema
     ) as LevelsModel;
 
-    console.info(`${this.name}-Module loaded & activated`);
+    console.info(`${this.name}-Module loaded & activated-`);
   }
 
   @Event("message")

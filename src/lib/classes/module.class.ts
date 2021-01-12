@@ -1,5 +1,5 @@
 export const MODULES: Record<string, any> = {};
-export class BaseModule {
+export class Module {
   disabled: boolean = false;
   name: string = "module" + new Date().getTime();
 

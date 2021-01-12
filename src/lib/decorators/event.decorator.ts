@@ -1,5 +1,3 @@
-import { BaseModule } from "../definitions/module.base";
-
 export interface EventDefinition {
   name: string;
   action: Function;

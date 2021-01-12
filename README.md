@@ -1,5 +1,5 @@
 <p align="center">
-<img src="logo.png" alt="Discordly Base" style="max-width: 50%">
+<img src="logo.png" alt="Discordly Base" style="max-width: 40%">
 </p>
 
 # Discordly Base ![ISSUES](https://img.shields.io/github/issues/Fokklz/discordly-base)
@@ -34,9 +34,9 @@ The main file of a module MUST export a class which extends BaseModule
 ## Create Module
 Create a new File inside the modules folder, called ```mymodule.ts```
 ```ts
-import { BaseModule } from "../definitions/module.base";
+import { Module } from "../lib/classes/module.class";
 
-export class MyModule extends BaseModule {
+export class MyModule extends Module {
   constructor() {
     super();
 
@@ -55,7 +55,7 @@ export class MyModule extends BaseModule {
 ## Reference a module within a module
 The name between the brackets is the name of the module which is set in the consturctor of the class
 ```ts
-import { MODULES } from "../definitions/module.base";
+import { MODULES } from "../lib/classes/module.class";
 
 MODULES["MyModule"].disable();
 //etc..
@@ -64,7 +64,7 @@ MODULES["MyModule"].disable();
 ## Events
 ```ts
 import { Message } from "discord.js";
-import Event from "../decorators/event.decorator";
+import Event from "../lib/decorators/event.decorator";
 
 //Event Name - Once (opt.) - Disabled (opt.)
 @Event("message", false, false)
@@ -84,7 +84,7 @@ disabled | Disables the command if **true**
 <br />
 
 ```ts
-import Command, { CommandMessage } from "../decorators/command.decorator";
+import Command, { CommandMessage } from "../lib/decorators/command.decorator";
 
 //CommandName - Options
 @Command("test", { disabled: false })

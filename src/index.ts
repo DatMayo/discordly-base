@@ -11,10 +11,10 @@ import { Client, Message } from "discord.js";
 import { Connection, ConnectionOptions, createConnection } from "mongoose";
 import defaultSettings, { SETTINGS } from "./config/settings";
 import defaultMessages from "./config/messages";
-import Event, { EVENTS } from "./decorators/event.decorator";
+import Event, { EVENTS } from "./lib/decorators/event.decorator";
 import { memberHasRole } from "./utils/discord-member.utils";
-import { CommandMessage, COMMANDS } from "./decorators/command.decorator";
-import { MODULES } from "./definitions/module.base";
+import { CommandMessage, COMMANDS } from "./lib/decorators/command.decorator";
+import { MODULES } from "./lib/classes/module.class";
 
 dotenv.config({ path: Path.join(__dirname, "..", ".env") });
 
