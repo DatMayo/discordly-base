@@ -227,10 +227,23 @@ export class Discordly {
                 !fs.existsSync(
                   Path.join(SETTINGS.modules, file.name, file.name + ".js")
                 )
-              )
-                return console.error(
+              ) {
+                console.error(
                   `Das Modul ${file.name} konnte nicht Initialisiert werden. (Missing Index)`
                 );
+                continue;
+              }
+
+              //Check if settings Exists
+              if (!Discordly.hasSetting(file.name)) {
+                console.error(`Missing settings for Module ${file.name}`);
+                continue;
+              }
+
+              //Check if module is Enabled
+              if (!Discordly.resolveSetting(file.name, "use")) {
+                continue;
+              }
               let imp = await import(
                 Path.join(SETTINGS.modules, file.name, `${file.name}.js`)
               );
@@ -238,6 +251,16 @@ export class Discordly {
               MODULES[impinst.name] = impinst;
               if (typeof impinst.init == "function") impinst.init();
             } else {
+              //Check if settings Exists
+              if (!Discordly.hasSetting(file.name)) {
+                console.error(`Missing settings for Module ${file.name}`);
+                continue;
+              }
+              //Check if module is Enabled
+              if (!Discordly.resolveSetting(file.name, "use")) {
+                continue;
+              }
+
               let imp = await import(Path.join(SETTINGS.modules, file.name));
               let impinst = new imp[Object.keys(imp)[0]]();
               MODULES[impinst.name] = impinst;
@@ -265,6 +288,23 @@ export class Discordly {
       }
     });
     return nextSettingsLevel.toString();
+  }
+
+  /**
+   * Validate existence for a Settings Tree
+   *
+   * @param keys string[]
+   */
+  static hasSetting(...keys): boolean {
+    let output = true;
+    let nextSettingsLevel = defaultSettings;
+    for (const key of keys) {
+      if (!nextSettingsLevel.hasOwnProperty(key)) {
+        output = false;
+        break;
+      }
+    }
+    return output;
   }
 
   /**
