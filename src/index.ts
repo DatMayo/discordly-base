@@ -1,20 +1,17 @@
-import "reflect-metadata";
-
-import * as dotenv from "dotenv";
-import * as Path from "path";
-import * as util from "util";
-import * as TSLog from "tslog";
-import * as fs from "fs";
-
 import { Client, Message } from "discord.js";
-
+import * as dotenv from "dotenv";
+import * as fs from "fs";
 import { Connection, ConnectionOptions, createConnection } from "mongoose";
-import defaultSettings, { SETTINGS } from "./config/settings";
-import defaultMessages from "./config/messages";
-import Event, { EVENTS } from "./lib/decorators/event.decorator";
-import { memberHasRole } from "./utils/discord-member.utils";
-import { CommandMessage, COMMANDS } from "./lib/decorators/command.decorator";
+import * as Path from "path";
+import "reflect-metadata";
+import * as TSLog from "tslog";
 import { MODULES } from "./lib/classes/module.class";
+import { CommandMessage, COMMANDS } from "./lib/decorators/command.decorator";
+import { EVENTS } from "./lib/decorators/event.decorator";
+import defaultMessages from "./lib/mongodb/default-messages";
+import defaultSettings from "./lib/mongodb/default-settings";
+import { SETTINGS } from "./lib/settings";
+import { memberHasRole } from "./utils/discord-member.utils";
 
 dotenv.config({ path: Path.join(__dirname, "..", ".env") });
 

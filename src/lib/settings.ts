@@ -1,5 +1,5 @@
-import * as Path from "path";
 import * as fs from "fs";
+import * as Path from "path";
 import * as TSLog from "tslog";
 
 export const SETTINGS = {
@@ -20,12 +20,3 @@ export const SETTINGS = {
   },
   varPattern: /\{( *.?)\}/g,
 };
-
-export const defaultSettings = {
-  levels: {
-    channel: "760939291915452429",
-    use: true,
-    xp: 0.22,
-  },
-};
-export default defaultSettings;
