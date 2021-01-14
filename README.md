@@ -13,7 +13,7 @@ A modular Discord bot using MongoDB coded with typescript
 - [A Discord Bot Token](https://github.com/Fokklz/discordly-base/wiki/Create-a-Discord-Bot-Token)
 
 # Configuration
-The important configuration points can be found in the ```.env``` file. Optional adjustments can be made in ```config/settings.ts``` and ```config/messages.ts```
+The important configuration points can be found in the ```.env``` file. Optional adjustments can be made in ```lib/settings.ts```
 
 # Install & Initial build
 ```bash
@@ -51,6 +51,8 @@ export class MyModule extends Module {
   }
 }
 ```
+In order for the module to be loaded, it is necessary to define a settings block in ```lib/mongodb/default-settings.ts```. (if you have not moved your settings to mongodb)
+In the settings, ```use``` must be defined & activated. for the module to be loaded
 
 ## Reference a module within a module
 The name between the brackets is the name of the module which is set in the consturctor of the class
