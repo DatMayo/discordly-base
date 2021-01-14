@@ -327,11 +327,13 @@ export class Discordly {
     //Replace message Key's
     if (args.length > 0) {
       let matches = message.match(SETTINGS.varPattern);
-      matches.forEach((match) => {
-        let key = Number.parseInt(match.replace(/[^0-9]{1,}/g, ""));
-        if (args[key] == undefined) message = message.replace(match, "NULL");
-        message = message.replace(match, args[key]);
-      });
+      if (matches.length > 0) {
+        matches.forEach((match) => {
+          let key = Number.parseInt(match.replace(/[^0-9]{1,}/g, ""));
+          if (args[key] == undefined) message = message.replace(match, "NULL");
+          message = message.replace(match, args[key]);
+        });
+      }
     }
     return message;
   }
