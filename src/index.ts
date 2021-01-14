@@ -278,7 +278,7 @@ export class Discordly {
    *
    * @param keys string[]
    */
-  static resolveSetting(...keys): string {
+  static resolveSetting(...keys): any {
     let nextSettingsLevel = defaultSettings;
     keys.forEach((key) => {
       if (nextSettingsLevel.hasOwnProperty(key)) {
@@ -287,7 +287,7 @@ export class Discordly {
         console.error(`Key ${key} not found in Settings`);
       }
     });
-    return nextSettingsLevel.toString();
+    return nextSettingsLevel;
   }
 
   /**
